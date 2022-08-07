@@ -25,4 +25,9 @@ Resources:
                 "task":"info",
                 "curso":"IA"
               }' # parâmetros que serão enviados para a função lambda
+Outputs:
+  NomeFuncao:
+    Description: Nome da função criada
+    Value: !Ref GetCursoFunction
+
 

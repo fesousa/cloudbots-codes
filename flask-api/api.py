@@ -34,12 +34,17 @@ def watsonwebhook():
     curso = req['curso']
 
     #crawler para pegar informações
-    r = requests.get(curso_urls[curso]).text
-    info = BeautifulSoup(r, 'html.parser')(class_='background-base-site')[0].text
+    nome_curso = curso_urls.get(curso)
+    if nome_curso:
+        r = requests.get(nome_curso).text
+        info = BeautifulSoup(r, 'html.parser')(class_='background-base-site')[0].text
 
-    #retornar informações no campo info, no formato JSON
-    return jsonify({'info':info})
-    
+        #retornar informações no campo info, no formato JSON
+        return jsonify({'info':info})
+    # curso não encontrado
+    else:
+        return jsonify({'info':'Não encontramos informações sobre este curso'})
+        
 # executar app flask
 if __name__ == '__main__':
   app.run()

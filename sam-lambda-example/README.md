@@ -6,7 +6,7 @@ Configurar variáveis de ambiente para conectar na AWS
 
 Windows/PowerShell
 
-```ps
+```powershell
 $Env:AWS_DEFAULT_REGION="regiao"
 $Env:AWS_ACCESS_KEY_ID="aws_access_key_id"
 $Env:AWS_SECRET_ACCESS_KEY="aws_secret_access_key"

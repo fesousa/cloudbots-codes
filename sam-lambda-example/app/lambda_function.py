@@ -16,6 +16,7 @@ curso_urls = {
 }
 
 def lambda_handler(event, context):
+    print("EVENTO: ", event)
     task = event['task']
     if task =='info':
 

@@ -1,0 +1,33 @@
+Transform: AWS::Serverless-2016-10-31
+
+Description:
+  Exemplo SAM Lambda Com evento de execução
+Globals:
+  Function:
+    Timeout: 30 # tempo máximo de execução da função, em segundos
+Resources:
+  AmazonLexBobFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: amazon-lex-bob # nome da função
+      Description: Integração Amazon Lex
+      CodeUri: ./app # localização local do código da função
+      Handler: lambda_function.lambda_handler # nome do arquivo e nome da função que será executada
+      Runtime: python3.9 # runtime de execução
+      Role: !Sub arn:aws:iam::${AWS::AccountId}:role/LabRole # Papel de execução - permissão para acessar serviços da AWS
+      Events: # Evento agendado para execução
+        ScheduledFunction:
+          Type: Schedule
+          Properties:
+            Schedule: cron(55 23 * * ? *) # executa todo dia às 23:55 UTC (20:55, BRT)
+            Name: test-lambda
+            Input: '{
+                "task":"info",
+                "curso":"IA"
+              }' # parâmetros que serão enviados para a função lambda
+Outputs:
+  NomeFuncao:
+    Description: Nome da função criada
+    Value: !Ref AmazonLexBobFunction
+
+

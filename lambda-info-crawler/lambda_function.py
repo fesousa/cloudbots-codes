@@ -16,11 +16,13 @@ curso_urls = {
 }
 
 def lambda_handler(event, context):
-    task = event['task']
+    print(event)
+    body = json.loads(event['body'])
+    task = body['task']
     if task =='info':
 
         # nome do curso enviado
-        curso = event['curso']
+        curso = body['curso']
 
         #crawler para pegar informações
         nome_curso = curso_urls.get(curso)

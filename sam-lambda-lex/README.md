@@ -47,6 +47,53 @@ sam deploy --stack-name amazon-lex-bob-stack --region us-east-1 --capabilities C
 
 ```json
 {
+   "sessionId":"242841987931764",
+   "inputTranscript":"IA",
+   "interpretations":[
+      {
+         "intent":{
+            "slots":{
+               "NomeCurso":{
+                  "shape":"Scalar",
+                  "value":{
+                     "resolvedValues":[
+                        "IA",
+                        "Big Data"
+                     ],
+                     "interpretedValue":"IA",
+                     "originalValue":"IA"
+                  }
+               }
+            },
+            "confirmationState":"None",
+            "name":"Informacoes",
+            "state":"InProgress"
+         },
+         "nluConfidence":1.0
+      },
+      {
+         "intent":{
+            "slots":{
+               
+            },
+            "confirmationState":"None",
+            "name":"FallbackIntent",
+            "state":"InProgress"
+         }
+      },
+      {
+         "intent":{
+            "slots":{
+               "NomeUsuario":"None"
+            },
+            "confirmationState":"None",
+            "name":"ContatoInicial",
+            "state":"InProgress"
+         },
+         "nluConfidence":0.17
+      }
+   ],
+   "sessionState":{
       "sessionAttributes":{
          
       },

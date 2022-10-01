@@ -46,6 +46,7 @@ sam deploy --stack-name amazon-lex-bob-stack --region us-east-1 --capabilities C
 ## Exemplo de evento do Lex
 
 ```json
+{
       "sessionAttributes":{
          
       },

@@ -46,85 +46,6 @@ sam deploy --stack-name amazon-lex-bob-stack --region us-east-1 --capabilities C
 ## Exemplo de evento do Lex
 
 ```json
-{
-   "sessionId":"087395486615644",
-   "inputTranscript":"ia",
-   "interpretations":[
-      {
-         "intent":{
-            "slots":{
-               "NomeCurso":{
-                  "shape":"Scalar",
-                  "value":{
-                     "originalValue":"ia",
-                     "resolvedValues":[
-                        "IA",
-                        "Big Data"
-                     ],
-                     "interpretedValue":"IA"
-                  }
-               }
-            },
-            "confirmationState":"None",
-            "name":"Informacoes",
-            "state":"InProgress"
-         }
-      },
-      {
-         "intent":{
-            "slots":{
-               "Email":"None",
-               "NomeCurso":{
-                  "shape":"Scalar",
-                  "value":{
-                     "originalValue":"ia",
-                     "resolvedValues":[
-                        "IA",
-                        "Big Data"
-                     ],
-                     "interpretedValue":"IA"
-                  }
-               },
-               "NomeSemestre":"None"
-            },
-            "confirmationState":"None",
-            "name":"Matricula",
-            "state":"InProgress"
-         },
-         "nluConfidence":0.51
-      },
-      {
-         "intent":{
-            "slots":{
-               
-            },
-            "confirmationState":"None",
-            "name":"FallbackIntent",
-            "state":"InProgress"
-         }
-      },
-      {
-         "intent":{
-            "slots":{
-               "NomeUsuario":{
-                  "shape":"Scalar",
-                  "value":{
-                     "originalValue":"ia",
-                     "resolvedValues":[
-                        
-                     ],
-                     "interpretedValue":"ia"
-                  }
-               }
-            },
-            "confirmationState":"None",
-            "name":"ContatoInicial",
-            "state":"InProgress"
-         },
-         "nluConfidence":0.41
-      }
-   ],
-   "sessionState":{
       "sessionAttributes":{
          
       },
@@ -133,12 +54,12 @@ sam deploy --stack-name amazon-lex-bob-stack --region us-east-1 --capabilities C
             "NomeCurso":{
                "shape":"Scalar",
                "value":{
-                  "originalValue":"ia",
                   "resolvedValues":[
                      "IA",
                      "Big Data"
                   ],
-                  "interpretedValue":"IA"
+                  "interpretedValue":"IA",
+                  "originalValue":"IA"
                }
             }
          },
@@ -146,7 +67,7 @@ sam deploy --stack-name amazon-lex-bob-stack --region us-east-1 --capabilities C
          "name":"Informacoes",
          "state":"InProgress"
       },
-      "originatingRequestId":"b752b2f2-f661-4ff9-a568-e81ae44c5d26"
+      "originatingRequestId":"fe0c6dcf-ce24-471c-8802-81034f04e3d9"
    },
    "responseContentType":"text/plain; charset=utf-8",
    "invocationSource":"DialogCodeHook",
@@ -155,11 +76,10 @@ sam deploy --stack-name amazon-lex-bob-stack --region us-east-1 --capabilities C
    "bot":{
       "aliasName":"TestBotAlias",
       "aliasId":"TSTALIASID",
-      "name":"Bob",
+      "name":"BobDev",
       "version":"DRAFT",
       "localeId":"pt_BR",
-      "id":"MXJ4CZ9LVO"
+      "id":"LGCXKRCGLH"
    }
 }
-
 ```

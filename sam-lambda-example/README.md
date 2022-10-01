@@ -39,5 +39,5 @@ sam package --region us-east-1 --resolve-s3
 Implantar
 
 ```bash
-sam deploy --stack-name amazon-lex-bob-stack --region us-east-1 --capabilities CAPABILITY_IAM --resolve-s3 --parameter-overrides role=FuncaoIAMPermissao
+sam deploy --stack-name sam-lambda-example-stack --region us-east-1 --capabilities CAPABILITY_IAM --resolve-s3 --parameter-overrides SufixoFuncao=sufixo
 ```

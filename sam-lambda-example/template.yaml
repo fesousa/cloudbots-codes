@@ -5,7 +5,7 @@ Description:
 Parameters:
   SufixoFuncao:
     Type: String
-    Default: fernandosousa
+    Default: minhafuncao
 Globals:
   Function:
     Timeout: 30 # tempo máximo de execução da função, em segundos
@@ -31,7 +31,7 @@ Resources:
         ScheduledFunction:
           Type: Schedule
           Properties:
-            Schedule: cron(55 23 * * ? *) # executa todo dia às 23:55 UTC (20:55, BRT)
+            Schedule: 'rate(10 minutes)' # executa a cada 10 minutos
             Name: test-hello-sam-function
             Input: '{ "body": {"mensagem":"Olá teste"} }' # parâmetros que serão enviados para a função lambda
 Outputs:

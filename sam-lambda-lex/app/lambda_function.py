@@ -17,21 +17,34 @@ curso_urls = {
 
 def lambda_handler(event, context):
     print("EVENTO: ", event)
-    task = event['task']
-    if task =='info':
 
-        # nome do curso enviado
-        curso = event['curso']
+    # task: intent enviada    
+    task = event.get('sessionState').get('intent').get('name')
+    if task =='Informacoes':
+
+        # nome do curso identificado do slot
+        curso = event.get('sessionState').get('intent').get('slots')\
+            .get('NomeCurso')
+        if curso:
+            curso = curso.get('value',{}).get('interpretedValue',{})
 
         #crawler para pegar informações
         nome_curso = curso_urls.get(curso)
         if nome_curso:
             r = requests.get(nome_curso).text
-            info = BeautifulSoup(r, 'html.parser')(class_='background-base-site')[0].text
-
+            info = BeautifulSoup(r, 'html.parser')(class_='content_destaque_sobre')[0].text
             retorno =  {
-                'statusCode': 200,
-                'body': json.dumps({'info': info})
+                "sessionState": {        
+                    "dialogAction": {           
+                        "type": "ElicitIntent"
+                    }            
+                },
+                "messages": [
+                    {
+                        "contentType": "PlainText",
+                        "content": info,
+                    }
+                ]
             }
             print(retorno)
             return retorno
@@ -39,15 +52,34 @@ def lambda_handler(event, context):
         # curso não encontrado
         else:
             retorno =  {
-                'statusCode': 404,
-                'body': json.dumps({'info': 'Não encontramos informações sobre este curso'})
+                "sessionState": {        
+                    "dialogAction": {           
+                        "type": "ElicitIntent"
+                    }            
+                },
+                "messages": [
+                    {
+                        "contentType": "PlainText",
+                        "content": "Curso não encontrado",
+                    }
+                ]
             }
             print(retorno)
             return retorno
         
     retorno =  {
-        'statusCode': 404,
-        'body': json.dumps({'erro': 'Tarefa não encontrado'})
-    }
+                "sessionState": {        
+                    "dialogAction": {           
+                        "type": "ElicitIntent"
+                    }            
+                },
+                "messages": [
+                    {
+                        "contentType": "PlainText",
+                        "content": "Curso não encontrado",
+                    }
+                ]
+            }
     
     print(retorno)
+    return retorno

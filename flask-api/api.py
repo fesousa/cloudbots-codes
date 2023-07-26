@@ -22,7 +22,7 @@ curso_urls = {
 
 # endpoint do webhook - POST
 @app.route('/chatbot',  methods=['POST'])
-def watsonwebhook():
+def webhook():
   # retornar dados enviados no formato JSON
   req = request.get_json()
 

@@ -28,7 +28,7 @@ def lambda_handler(event, context):
         nome_curso = curso_urls.get(curso)
         if nome_curso:
             r = requests.get(nome_curso).text
-            info = BeautifulSoup(r, 'html.parser')(class_='background-base-site')[0].text
+            info = BeautifulSoup(r, 'html.parser')(class_='content_destaque_sobre')[0].text
 
             retorno =  {
                 'statusCode': 200,

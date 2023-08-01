@@ -32,7 +32,7 @@ def lambda_handler(event, context):
 
             retorno =  {
                 'statusCode': 200,
-                'body': json.dumps({'info': info})
+                'body': {'info': info}
             }
             print(retorno)
             return retorno
@@ -41,7 +41,7 @@ def lambda_handler(event, context):
         else:
             retorno =  {
                 'statusCode': 404,
-                'body': json.dumps({'info': 'Não encontramos informações sobre este curso'})
+                'body': {'info': 'Não encontramos informações sobre este curso'}
             }
             print(retorno)
             return retorno

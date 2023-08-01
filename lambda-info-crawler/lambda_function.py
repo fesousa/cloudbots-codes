@@ -17,7 +17,7 @@ curso_urls = {
 
 def lambda_handler(event, context):
     print(event)
-    body = json.loads(event['body'])
+    body = json.loads(event['queryStringParameters'])
     task = body['task']
     if task =='info':
 
